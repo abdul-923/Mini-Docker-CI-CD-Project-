@@ -17,4 +17,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build Docker image
-        run: docker build -t my-web-app .
+         run: docker build -t my-web-app .
