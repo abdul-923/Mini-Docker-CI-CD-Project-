@@ -19,5 +19,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t my-web-app .
+        run: |
+          # Docker image names must be lowercase and cannot contain spaces or invalid chars.
+          # Using a sanitized image name derived from your requested display name:
+          IMAGE=abdul623/my-docker-ci-cd-web-app-mini-project:latest
+          docker build -t "$IMAGE" --label "display-name=My Docker CI/CD Web App - Mini Project.." .
+
+      - name: Push Docker image
+        run: |
+          IMAGE=abdul623/my-docker-ci-cd-web-app-mini-project:latest
+          docker push "$IMAGE"
 
